@@ -3,58 +3,58 @@ USE tecnoStore;
 
 /* ******* CREACIÓN DE TABLAS ******* */
 
-CREATE TABLE estado(
-    idEstado TINYINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombreEstado VARCHAR(100) NOT NULL
+CREATE TABLE Status(
+    idStatus TINYINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nameStatus VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE rol(
-    idRol TINYINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombreRol VARCHAR(100) NOT NULL,
+CREATE TABLE Role(
+    idRole TINYINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nameRole VARCHAR(100) NOT NULL,
     /* FK */
-    idEstado TINYINT DEFAULT 1
+    idStatus TINYINT DEFAULT 1
 );
 
-CREATE TABLE usuario(
-    idUsuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    cedula INT UNSIGNED UNIQUE NOT NULL,
-    nombre VARCHAR(255) NOT NULL,
-    apellido VARCHAR(255) NOT NULL,
+CREATE TABLE User(
+    idUser INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    identification INT UNSIGNED UNIQUE NOT NULL,
+    names VARCHAR(255) NOT NULL,
+    lastNames VARCHAR(255) NOT NULL,
     email VARCHAR(255),
-    contrasena VARCHAR(100) NOT NULL,
+    pass VARCHAR(100) NOT NULL,
     /* FK */
-    idRol TINYINT DEFAULT 3,
-    idEstado TINYINT DEFAULT 1
+    idRole TINYINT DEFAULT 3,
+    idStatus TINYINT DEFAULT 1
 
 );
 
-CREATE TABLE producto(
-    idProducto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombreProducto VARCHAR(255) NOT NULL ,
-    precio INT NOT NULL,
-    imgProducto VARCHAR(500),
-    descripcion VARCHAR(255) NOT NULL,
+CREATE TABLE Product(
+    idProduct INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nameProduct VARCHAR(255) NOT NULL ,
+    price INT NOT NULL,
+    imgProduct VARCHAR(500),
+    descriptionProduct VARCHAR(255) NOT NULL,
     /* FK */
-    idSubcategoria INT NOT NULL,
-    idEstado TINYINT DEFAULT 1
+    idSubCategory INT NOT NULL,
+    idStatus TINYINT DEFAULT 1
 
 );
 
-CREATE TABLE categoria(
-    idCategoria INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombreCategoria VARCHAR(100) NOT NULL,
-    descripcionCategoria VARCHAR(100) DEFAULT 'Sin descripción',
+CREATE TABLE Category(
+    idCategory INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nameCategory VARCHAR(100) NOT NULL,
+    descriptionCategory VARCHAR(100) DEFAULT 'Sin descripción',
     /* FK */
-    idEstado TINYINT DEFAULT 1
+    idStatus TINYINT DEFAULT 1
 );
 
-CREATE TABLE subcategoria(
-    idSubcategoria INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombreSubcategoria VARCHAR(100) NOT NULL,
-    descripcionSubcategoria VARCHAR(100) DEFAULT 'Sin descripción',
+CREATE TABLE SubCategory(
+    idSubCategory INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nameSubCategory VARCHAR(100) NOT NULL,
+    descriptionSubCategory VARCHAR(100) DEFAULT 'Sin descripción',
     /* FK */
-    idCategoria INT NOT NULL,
-    idEstado TINYINT DEFAULT 1
+    idCategory INT NOT NULL,
+    idStatus TINYINT DEFAULT 1
 
 );
 
