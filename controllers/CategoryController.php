@@ -7,7 +7,7 @@ class CategoryController {
 	public function __construct() {
 		$this->model = new CategoryModel();
 	}
-
+	
 	public function set( $category_data = array() ) {
 		return $this->model->set($category_data);
 	}

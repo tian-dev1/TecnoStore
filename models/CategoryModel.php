@@ -1,7 +1,7 @@
 <?php 
 require_once('Model.php');
 
-class Category extends Model {
+class CategoryModel extends Model {
 	public $idCategory;
     public $nameCategory; 
     public $descriptionCategory;
@@ -13,7 +13,8 @@ class Category extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "REPLACE INTO Category (nameCategory, descriptionCategory, idStatus) VALUES ($nameCategory, $descriptionCategory, $idStatus)";
+		$this->query = "REPLACE INTO Category (idCategory, nameCategory, descriptionCategory, idStatus) VALUES ($idCategory, '$nameCategory', '$descriptionCategory', $idStatus)";
+		print_r($this->query);
 		$this->set_query();
 	}
 

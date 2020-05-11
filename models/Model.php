@@ -1,61 +1,63 @@
-<?php
-
+<?php 
+//Clase Abstracta que nos permitirá conectarnos a MySQL
 abstract class Model {
-    //Atrbiutos para la conexion con MySQL
-    private static $DB_HOST = 'localhost';
-    private static $DB_USER = 'root';
-    private static $DB_PASS = '';
-    private static $DB_NAME = 'tecnoCenter';
-    private static $DB_CHARSET = 'utf8';
-    
-    private static $CONNECTION_DB ; 
-    private static $QUERY;
-    private static $ROWS = array();
+	//Atributos
+	private static $db_host = 'localhost';
+	private static $db_user = 'root';
+	private static $db_pass = '';
+	private static $db_name = 'tecnoStore';
+	private static $db_charset = 'utf8';
+	private $conn;
+	protected $query;
+	protected $rows = array();
 
-    //Métodos abstactos para la CRUD de las clases que heredan
-    abstract protected function set();
-    abstract protected function get(); 
-    abstract protected function del();
+	//Métodos
+	//métodos abstractos para CRUD de clases que hereden
+	abstract protected function set();
+	abstract protected function get();
+	abstract protected function del();
 
+	//método privado para conectarse a la base de datos
+	private function db_open() {
+		//http://php.net/manual/es/class.mysqli.php
+		//http://php.net/manual/es/mysqli.construct.php
+		$this->conn = new mysqli(
+			self::$db_host,
+			self::$db_user,
+			self::$db_pass,
+			self::$db_name
+		);
 
-    //Métodos privados para conectarse a la Base de datos
-    private funtion db_open(){
-        //Accedemos a CONNECTION_DB para instanciar una nueva conexión de mysqli
-        $this->CONNECTION_DB = new mysqli(
-            self::$DB_HOST,
-            self::$DB_USER,
-            self::$DB_PASS,
-            self::$DB_NAME
-        );
-    }
-    $this->CONNECTION_DB->set_charset(self::$DB_CHARSET);
+		//http://php.net/manual/es/mysqli.set-charset.php
+		$this->conn->set_charset(self::$db_charset);
+	}
+
+	//método privado para desconectarse de la base de datos
+	private function db_close() {
+		//http://php.net/manual/es/mysqli.close.php
+		$this->conn->close();
+	}
+
+	//establecer un query que afecte datos (INSERT, DELETE o UPDATE)
+	protected function set_query() {
+		$this->db_open();
+		//http://php.net/manual/es/mysqli.query.php
+		$this->conn->query($this->query);
+		$this->db_close();
+	}
+
+	//obtener datos de un query (SELECT)
+	protected function get_query() {
+		$this->db_open();
+
+		$result = $this->conn->query($this->query);
+		//http://php.net/manual/es/mysqli-result.fetch-assoc.php
+		//http://php.net/manual/es/mysqli-result.fetch-row.php
+		while( $this->rows[] = $result->fetch_assoc() );
+		$result->close();
+
+		$this->db_close();
+
+		return array_pop($this->rows);
+	}
 }
-
-//Establecer un query que afecte datos (Insert/Update o Delete)
-protected function set_query(){
-    $this->db_open();
-
-    //Realizar consulta a la DB
-    $this->CONNECTION_DB->query($this->QUERY);
-
-    $this->db_close();
-}
-
-//Obtener datos de un query (Select)
-protected function get_query(){
-    $this->db_open();
-
-    $result = $this->CONNECTION_DB->query($this->QUERY);
-    
-    while($this->rows[] = $result->fetch_assoc() );
-    $result->close();
-
-    $this->db_close();
-
-    return array_pop($this->rows);
-
-
-}
-
-
-?>

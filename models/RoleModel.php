@@ -1,7 +1,7 @@
 <?php 
 require_once('Model.php');
 
-class Role extends Model {
+class RoleModel extends Model {
 	public $idRole;
     public $nameRole; 
     /* FK */
@@ -12,7 +12,7 @@ class Role extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "REPLACE INTO Role (nameRole, idStatus) VALUES ($nameRole, $idStatus)";
+		$this->query = "REPLACE INTO Role (idRole, nameRole, idStatus) VALUES ('$idRole', '$nameRole', $idStatus)";
 		$this->set_query();
 	}
 

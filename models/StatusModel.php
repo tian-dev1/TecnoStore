@@ -1,7 +1,7 @@
 <?php 
 require_once('Model.php');
 
-class Status extends Model {
+class StatusModel extends Model {
 	public $idStatus;
     public $nameStatus; 
 
@@ -10,7 +10,7 @@ class Status extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "REPLACE INTO Status (nameStatus) VALUES ($nameStatus)";
+		$this->query = "REPLACE INTO Status (idStatus, nameStatus) VALUES ( $idStatus, '$nameStatus')";
 		$this->set_query();
 	}
 
@@ -35,7 +35,7 @@ class Status extends Model {
 		return $data;
 	}
 
-	public function del( $idSStatus = '' ) {
+	public function del( $idStatus = '' ) {
 		$this->query = "DELETE FROM Status WHERE idStatus = $idStatus";
 		$this->set_query();
 	}
