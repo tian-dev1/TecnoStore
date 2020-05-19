@@ -19,6 +19,10 @@ class RoleController {
 	public function del( $idRole = '' ) {
 		return $this->model->del($idRole);
 	}
+	
+	public function showStatus(){
+		return $this->model->showStatus();
+	}
 
 	// public function __destruct() {
 	// 	unset($this);

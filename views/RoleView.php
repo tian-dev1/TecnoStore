@@ -100,3 +100,22 @@ function Consultar(){
 			}
 				echo '</table>';
 }
+
+function desplegableEstado()
+{
+    $role = new RoleController();
+	$resultado = $role->showStatus();
+	
+        if ($resultado != 'error') {
+
+            foreach ($resultado as $Estado) {
+			// 	print_r($resultado[$n]['idStatus']);
+			//    print_r($resultado[$n]['nameStatus']);
+			//echo $Estado['idStatus'] . $Estado['nameStatus'] ;
+			   echo "<option value='". $Estado['idStatus'] ."'> " . $Estado['nameStatus'] . "  </option>";
+           
+			}
+        } else {
+            echo "<p>No hay estados en BD</p>";
+        }
+}

@@ -33,7 +33,9 @@
             <h2>Actualizar rol:</h2>
             <input style="margin: 20px;" type="number" name="idRoleUpdate" placeholder="id estado">
             <input style="margin: 20px;" type="text" name="nameRoleUpdate" placeholder="nombre estado">
-            <input style="margin: 20px;" type="text" name="idStatusUpdate" placeholder="nombre estado">
+            <select name="idStatusUpdate">
+                <?php desplegableEstado(); ?>
+            </select>
             <input style="margin: 20px;" type="submit" value="Actualizar" name="accion">
         </form>
     </div>

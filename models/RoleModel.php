@@ -42,6 +42,25 @@ class RoleModel extends Model {
 		$this->set_query();
 	}
 
+	public function showStatus(){
+
+        $this->query = "SELECT * FROM Status";
+		$this->get_query();
+		//var_dump($this->rows);
+
+		$num_rows = count($this->rows);
+		//echo $num_rows;
+
+		$data = array();
+
+		foreach ($this->rows as $key => $value) {
+			array_push($data, $value);
+			//$data[$key] =  $value;
+		}
+
+		return $data;
+    }
+
 	// public function __destruct() {
 	// 	unset($this);
 	// }

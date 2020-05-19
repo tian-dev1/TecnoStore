@@ -1,27 +1,29 @@
 <?php 
-require(__DIR__ . '/../controllers/CategoryController.php');
+require(__DIR__ . '/../controllers/SubCategoryController.php');
 
-$category = new CategoryController();
+$sub_category = new SubCategoryController();
 
 if(isset($_POST['accion'])){
 	$accion = $_POST['accion'];
 	switch($accion){
 		case 'Insertar':
-            if( isset($_POST['nameCategory'])  && !empty($_POST['nameCategory']) && isset($_POST['descriptionCategory'])  && !empty($_POST['descriptionCategory']) ){
+            if( isset($_POST['nameSubCategory'])  && !empty($_POST['nameCategory']) && isset($_POST['descriptionSubCategory'])  && !empty($_POST['descriptionSubCategory']) && isset($_POST['idCategory'])  && !empty($_POST['idCategory']) ){
                 
-                $nameCategory = $_POST['nameCategory'];
-				$descriptionCategory = $_POST['descriptionCategory'];
+                $nameSubCategory = $_POST['nameSubCategory'];
+				$descriptionSubCategory = $_POST['descriptionSubCategory'];
+				$idCategory = $_POST['idCategory'];
                 //Creación
-                $new_category = array(
-					'idCategory' => 0,
-                    'nameCategory' => $nameCategory,
-					'descriptionCategory' => $descriptionCategory,
+                $new_sub_category = array(
+					'idSubCategory' => 0,
+                    'nameSubCategory' => $nameSubCategory,
+					'descriptionSubCategory' => $descriptionSubCategory,
+					'idCategory' => $idCategory,
 					'idStatus' => 1
 				);
 				
-                $category->set($new_category);
+                $sub_category->set($new_sub_category);
         
-				header('Location: ../Category.php');
+				header('Location: ../SubCategory.php');
 				
             }else{
                 echo 'Campos vacios no se puede realizar la inserción';
@@ -33,8 +35,8 @@ if(isset($_POST['accion'])){
 		break;
 
 		case 'Actualizar':
-            if( (isset($_POST['idCategory']) && !empty($_POST['idCategory'])) && (isset($_POST['nameCategory']) && !empty($_POST['nameCategory'])) 
-                && (isset($_POST['descriptionCategory']) && !empty($_POST['descriptionCategory'])) && (isset($_POST['idStatus']) && !empty($_POST['idStatus'])) 
+            if( (isset($_POST['idSubCategory']) && !empty($_POST['idSubCategory'])) && (isset($_POST['nameSubCategory']) && !empty($_POST['nameSubCategory'])) 
+                && (isset($_POST['descriptionSubCategory']) && !empty($_POST['descriptionSubCategory'])) && (isset($_POST['idStatus']) && !empty($_POST['idStatus'])) 
             )
 			{
 				$idCategory = $_POST['idCategory'];
@@ -112,23 +114,4 @@ function Consultar(){
 				</tr>';
 			}
 				echo '</table>';
-}
-
-function desplegableEstado()
-{
-    $category = new CategoryController();
-	$resultado = $category->showStatus();
-	
-        if ($resultado != 'error') {
-
-            foreach ($resultado as $Estado) {
-			// 	print_r($resultado[$n]['idStatus']);
-			//    print_r($resultado[$n]['nameStatus']);
-			//echo $Estado['idStatus'] . $Estado['nameStatus'] ;
-			   echo "<option value='". $Estado['idStatus'] ."'> " . $Estado['nameStatus'] . "  </option>";
-           
-			}
-        } else {
-            echo "<p>No hay estados en BD</p>";
-        }
 }

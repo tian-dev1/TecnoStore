@@ -20,7 +20,7 @@
         <form class="formInsert" method="POST" action="views/CategoryView.php">
             <h2>Insertar Categoria:</h2>
             <input type="text" name="nameCategory" placeholder="Nombre categoria">
-            <input type="text" name="descriptionCategory" placeholder="Descripción categoria">
+            <input type="text" name="descriptionCategory" placeholder="Descripción categoria" value="Sin descripción">
             <input type="hidden" name="idStatus" value="1">
             <input type="submit" value="Insertar" name="accion">     
         </form>
@@ -35,8 +35,10 @@
             <h2>Actualizar Categoria:</h2>
             <input style="margin: 20px;" type="number" name="idCategory" placeholder="id estado">
             <input style="margin: 20px;" type="text" name="nameCategory" placeholder="Nombre categoria">
-            <input style="margin: 20px;" type="text" name="descriptionCategory" placeholder="dESCRIPCIÓN">
-            <input type="hidden" name="idStatus" value="1">
+            <input style="margin: 20px;" type="text" name="descriptionCategory" placeholder="Descripción">
+            <select name="idStatus">
+                <?php desplegableEstado(); ?>
+            </select>
            <input style="margin: 20px;" type="submit" value="Actualizar" name="accion">
         </form>
     </div>

@@ -20,6 +20,10 @@ class CategoryController {
 		return $this->model->del($idCategoty);
 	}
 
+	public function showStatus(){
+		return $this->model->showStatus();
+	}
+
 	// public function __destruct() {
 	// 	unset($this);
 	// }
