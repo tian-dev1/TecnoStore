@@ -7,11 +7,12 @@ if(isset($_POST['accion'])){
 	$accion = $_POST['accion'];
 	switch($accion){
 		case 'Insertar':
-            if( isset($_POST['nameSubCategory'])  && !empty($_POST['nameCategory']) && isset($_POST['descriptionSubCategory'])  && !empty($_POST['descriptionSubCategory']) && isset($_POST['idCategory'])  && !empty($_POST['idCategory']) ){
+            if( isset($_POST['nameSubCategory'])  && !empty($_POST['nameSubCategory']) && isset($_POST['descriptionSubCategory'])  && !empty($_POST['descriptionSubCategory']) && isset($_POST['idCategory'])  && !empty($_POST['idCategory']) ){
                 
                 $nameSubCategory = $_POST['nameSubCategory'];
 				$descriptionSubCategory = $_POST['descriptionSubCategory'];
 				$idCategory = $_POST['idCategory'];
+				
                 //Creación
                 $new_sub_category = array(
 					'idSubCategory' => 0,
@@ -26,7 +27,8 @@ if(isset($_POST['accion'])){
 				header('Location: ../SubCategory.php');
 				
             }else{
-                echo 'Campos vacios no se puede realizar la inserción';
+				echo 'Campos vacios no se puede realizar la inserción';
+				
             }
         break;
         
@@ -36,12 +38,13 @@ if(isset($_POST['accion'])){
 
 		case 'Actualizar':
             if( (isset($_POST['idSubCategory']) && !empty($_POST['idSubCategory'])) && (isset($_POST['nameSubCategory']) && !empty($_POST['nameSubCategory'])) 
-                && (isset($_POST['descriptionSubCategory']) && !empty($_POST['descriptionSubCategory'])) && (isset($_POST['idStatus']) && !empty($_POST['idStatus'])) 
+                && (isset($_POST['descriptionSubCategory']) && !empty($_POST['descriptionSubCategory'])) && (isset($_POST['idCategory']) && !empty($_POST['idCategory'])) && (isset($_POST['idStatus']) && !empty($_POST['idStatus'])) 
             )
 			{
+				$idSubCategory = $_POST['idSubCategory'];
+                $nameSubCategory = $_POST['nameSubCategory'];
+				$descriptionSubCategory = $_POST['descriptionSubCategory'];
 				$idCategory = $_POST['idCategory'];
-                $nameCategory = $_POST['nameCategory'];
-                $descriptionCategory = $_POST['descriptionCategory'];
 				$idStatus = $_POST['idStatus'];
 				
                 // echo "
@@ -51,17 +54,18 @@ if(isset($_POST['accion'])){
                 //     estado de la categoria $idStatus <br>
                 //     ";
 
-				$update_category= array(
+				$update_sub_category= array(
+					'idSubCategory' => $idSubCategory,
+                    'nameSubCategory' => $nameSubCategory,
+					'descriptionSubCategory' => $descriptionSubCategory,
 					'idCategory' => $idCategory,
-                    'nameCategory' => $nameCategory,
-                    'descriptionCategory' => $descriptionCategory,
                     'idStatus' => $idStatus 
 				);
-				// print_r($update_category);
+				// print_r($update_sub_category);
 				
-				$category->set($update_category);
+				$sub_category->set($update_sub_category);
 
-				header('Location: ../Category.php');
+				header('Location: ../SubCategory.php');
 				
 			}else{
 				echo "Campos vacios no se puede realizar la actualización";
@@ -69,13 +73,13 @@ if(isset($_POST['accion'])){
 		break;
 
 		case 'Eliminar':
-            if(isset($_POST['IdCategoryDelete'])  && !empty($_POST['IdCategoryDelete'])   ){
+            if(isset($_POST['idSubCategoryDelete'])  && !empty($_POST['idSubCategoryDelete'])   ){
                         
-                $IdCategoryDelete = $_POST['IdCategoryDelete'];
-                echo "$IdCategoryDelete";
-				$category->del($IdCategoryDelete); 
+                $idSubCategoryDelete = $_POST['idSubCategoryDelete'];
+                echo "$idSubCategoryDelete";
+				$sub_category->del($idSubCategoryDelete); 
 				
-				header('Location: ../Category.php');
+				header('Location: ../SubCategory.php');
 
             }else{
                 echo 'Campos vacios no se puede realizar la eliminación';
@@ -87,31 +91,63 @@ if(isset($_POST['accion'])){
 }
 
 function Consultar(){
-	$category = new CategoryController();
-	$category_data = $category->get();
-			//var_dump($category_data);
-			$num_category = count($category_data);
+	$sub_category = new SubCategoryController();
+	$sub_category_data = $sub_category->get();
+			//var_dump($sub_category_data);
+			$num_sub_category = count($sub_category_data);
 ?>
 			
-			<h2>Consulta de categorias</h2>
-			<?php echo "<h3>Número de Registros: $num_category</h3>"; ?>
+			<h2>Consulta de sub categorias</h2>
+			<?php echo "<h3>Número de Registros: $num_sub_category</h3>"; ?>
 				<table>
 				<tr>
 					<th>ID </th>
 					<th>Nombre </th>
                     <th>Descripción </th>
+					<th>Categoria </th>
 					<th>Estado </th>
 				</tr>
 <?php 
-			for ($n = 0; $n < count($category_data); $n++) {
+			for ($n = 0; $n < count($sub_category_data); $n++) {
 				
 				echo '<tr>
-					<td>'.$category_data[$n]['idCategory'].'</td>
-                    <td>'.$category_data[$n]['nameCategory'].'</td>
-                    <td>'.$category_data[$n]['descriptionCategory'].'</td>
-                    <td>'.$category_data[$n]['idStatus'].'</td>
+					<td>'.$sub_category_data[$n]['idSubCategory'].'</td>
+                    <td>'.$sub_category_data[$n]['nameSubCategory'].'</td>
+					<td>'.$sub_category_data[$n]['descriptionSubCategory'].'</td>
+					<td>'.$sub_category_data[$n]['idCategory'].'</td>
+                    <td>'.$sub_category_data[$n]['idStatus'].'</td>
                     
 				</tr>';
 			}
 				echo '</table>';
+}
+
+function dropDownStatus(){
+    $sub_category = new SubCategoryController();
+	$resultado = $sub_category->showStatus();
+	
+        if ($resultado != 'error') {
+
+            foreach ($resultado as $Status) {
+			echo "<option value=". $Status['idStatus'] ."> ". $Status['nameStatus'] ." </option>";
+			   
+			}
+        } else {
+            echo "<p>No hay estados en BD</p>";
+        }
+}
+
+function dropDownCategory(){
+    $sub_category = new SubCategoryController();
+	$resultado = $sub_category->showCategory();
+	
+        if ($resultado != 'error') {
+
+            foreach ($resultado as $Category) {
+			echo "<option value=". $Category['idCategory'] ."> ". $Category['nameCategory'] ." </option>";
+			   
+			}
+        } else {
+            echo "<p>No hay estados en BD</p>";
+        }
 }

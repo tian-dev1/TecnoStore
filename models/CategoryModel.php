@@ -14,7 +14,7 @@ class CategoryModel extends Model {
 		}
 
 		$this->query = "REPLACE INTO Category (idCategory, nameCategory, descriptionCategory, idStatus) VALUES ($idCategory, '$nameCategory', '$descriptionCategory', $idStatus)";
-		print_r($this->query);
+		//print_r($this->query);
 		$this->set_query();
 	}
 

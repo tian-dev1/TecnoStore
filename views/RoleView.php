@@ -101,18 +101,18 @@ function Consultar(){
 				echo '</table>';
 }
 
-function desplegableEstado()
+function dropDownStatus()
 {
     $role = new RoleController();
 	$resultado = $role->showStatus();
 	
         if ($resultado != 'error') {
 
-            foreach ($resultado as $Estado) {
+            foreach ($resultado as $Status) {
 			// 	print_r($resultado[$n]['idStatus']);
 			//    print_r($resultado[$n]['nameStatus']);
 			//echo $Estado['idStatus'] . $Estado['nameStatus'] ;
-			   echo "<option value='". $Estado['idStatus'] ."'> " . $Estado['nameStatus'] . "  </option>";
+			   echo "<option value='". $Status['idStatus'] ."'> " . $Status['nameStatus'] . "  </option>";
            
 			}
         } else {

@@ -34,7 +34,7 @@
             <input style="margin: 20px;" type="number" name="idRoleUpdate" placeholder="id estado">
             <input style="margin: 20px;" type="text" name="nameRoleUpdate" placeholder="nombre estado">
             <select name="idStatusUpdate">
-                <?php desplegableEstado(); ?>
+                <?php dropDownStatus(); ?>
             </select>
             <input style="margin: 20px;" type="submit" value="Actualizar" name="accion">
         </form>

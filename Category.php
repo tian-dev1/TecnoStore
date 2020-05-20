@@ -37,7 +37,7 @@
             <input style="margin: 20px;" type="text" name="nameCategory" placeholder="Nombre categoria">
             <input style="margin: 20px;" type="text" name="descriptionCategory" placeholder="Descripción">
             <select name="idStatus">
-                <?php desplegableEstado(); ?>
+                <?php dropDownStatus(); ?>
             </select>
            <input style="margin: 20px;" type="submit" value="Actualizar" name="accion">
         </form>

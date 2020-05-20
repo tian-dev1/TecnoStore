@@ -1,7 +1,7 @@
 <?php 
 require_once(__DIR__ . '/../models/SubCategoryModel.php');
 
-class /SubCategoryController {
+class SubCategoryController {
 	private $model;
 
 	public function __construct() {
@@ -18,6 +18,14 @@ class /SubCategoryController {
 
 	public function del( $idSubCategory = '' ) {
 		return $this->model->del($idSubCategory);
+	}
+
+	public function showStatus(){
+		return $this->model->showStatus();
+	}
+
+	public function showCategory(){
+		return $this->model->showCategory();
 	}
 
 	// public function __destruct() {
