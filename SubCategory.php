@@ -21,22 +21,32 @@
             <h2>Insertar Sub Categoria:</h2>
             <input type="text" name="nameSubCategory" placeholder="Nombre sub categoria">
             <input type="text" name="descriptionSubCategory" placeholder="Descripción sub categoria" value="Sin descripción">
-            <input type="number" name="idCategory" placeholder="Id categoria">
+            <select name="idCategory">
+                <option value="" selected>Seleccione...</option>
+                <?php dropDownCategory(); ?>
+            </select>
             <input type="submit" value="Insertar" name="accion">     
         </form>
         <form class="formDelete" method="POST" action="views/SubCategoryView.php">
             <div class="sub-container">
                 <h2>Eliminar Sub Categoria:</h2>
-                <input type="number" name="idSubCategoryDelete" placeholder="ID Sub Categoria">
+                <select name="idSubCategoryDelete">
+                    <option value="" selected>Seleccione...</option>
+                    <?php getSubCategoryId(); ?>
+                </select>
                 <input type="submit" value="Eliminar" name="accion">
             </div>   
         </form>
         <form class="formUpdate" method="POST" action="views/SubCategoryView.php">
             <h2>Actualizar Sub Categoria:</h2>
-            <input style="margin: 20px;" type="number" name="idSubCategory" placeholder="Id sub estado">
+            <select name="idSubCategory">
+                <option value="" selected>Seleccione...</option>
+                <?php getSubCategoryId(); ?>
+            </select>
             <input style="margin: 20px;" type="text" name="nameSubCategory" placeholder="Nombre categoria">
             <input style="margin: 20px;" type="text" name="descriptionSubCategory" placeholder="Descripción">
             <select name="idCategory">
+                <option value="" selected>Seleccione...</option>
                 <?php dropDownCategory(); ?>
             </select>
             <select name="idStatus">

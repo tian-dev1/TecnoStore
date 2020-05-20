@@ -25,15 +25,21 @@
         <form class="formDelete" method="POST" action="views/RoleView.php">
             <div class="sub-container">
                 <h2>Eliminar rol</h2>
-                <input type="number" name="idRoleDelete" placeholder="id rol">
+                <select name="idRoleDelete">
+                    <option value="" selected>Seleccione...</option>
+                    <?php getRoleId(); ?>
+                </select>
                 <input type="submit" value="Eliminar" name="accion">
             </div>   
         </form>
         <form class="formUpdate" method="POST" action="views/RoleView.php">
             <h2>Actualizar rol:</h2>
-            <input style="margin: 20px;" type="number" name="idRoleUpdate" placeholder="id estado">
-            <input style="margin: 20px;" type="text" name="nameRoleUpdate" placeholder="nombre estado">
-            <select name="idStatusUpdate">
+            <select name="idRole">
+                <option value="" selected>Seleccione...</option>
+                <?php getRoleId(); ?>
+            </select>
+            <input style="margin: 20px;" type="text" name="nameRole" placeholder="nombre estado">
+            <select name="idStatus">
                 <?php dropDownStatus(); ?>
             </select>
             <input style="margin: 20px;" type="submit" value="Actualizar" name="accion">

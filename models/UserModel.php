@@ -17,7 +17,7 @@ class User extends Model {
 			$$key = $value;
 		}
 
-		$this->query = "REPLACE INTO User (identification, names, lastNames, email, pass, idRole, idStatus) VALUES ($identification, $names, $lastNames, $email, $pass, $idRole, $idStatus)";
+		$this->query = "REPLACE INTO Person (idPerson, identification, names, lastNames, email, pass, idRole, idStatus) VALUES ($identification, $names, $lastNames, $email, $pass, $idRole, $idStatus)";
 		$this->set_query();
 	}
 

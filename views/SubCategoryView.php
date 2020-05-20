@@ -122,6 +122,21 @@ function Consultar(){
 				echo '</table>';
 }
 
+function getSubCategoryId(){
+	$sub_category = new SubCategoryController();
+	$id_sub_category = $sub_category->get();
+
+	if ($id_sub_category != 'error') {
+
+		foreach ($id_sub_category as $idSubCategory) {
+		echo "<option value=". $idSubCategory['idSubCategory'] ."> ". $idSubCategory['idSubCategory'] ." </option>";
+		   
+		}
+	} else {
+		echo "<p>No hay sub categorias en BD</p>";
+	}					
+}
+
 function dropDownStatus(){
     $sub_category = new SubCategoryController();
 	$resultado = $sub_category->showStatus();

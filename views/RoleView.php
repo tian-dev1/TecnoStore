@@ -31,19 +31,19 @@ if(isset($_POST['accion'])){
 
 		case 'Actualizar':
 
-			if( (isset($_POST['idRoleUpdate']) && !empty($_POST['idRoleUpdate'])) && (isset($_POST['nameRoleUpdate']) && !empty($_POST['nameRoleUpdate'])) )
+			if( (isset($_POST['idRole']) && !empty($_POST['idRole'])) && (isset($_POST['nameRole']) && !empty($_POST['nameRole'])) )
 			{
-				$idRoleUpdate = $_POST['idRoleUpdate'];
-                $nameRoleUpdate = $_POST['nameRoleUpdate'];
-                $idStatusUpdate = $_POST['idStatusUpdate'];
+				$idRole = $_POST['idRole'];
+                $nameRole = $_POST['nameRole'];
+                $idStatus = $_POST['idStatus'];
 				
 				// echo "Id del status $idStatusUpdate  <br>
 				// 	nuevo nombre estado $nameStatusUpdate <br>";
 
 				$update_role = array(
-					'idRole' => $idRoleUpdate,
-                    'nameRole' => $nameRoleUpdate,
-                    'idStatus' => $idStatusUpdate 
+					'idRole' => $idRole,
+                    'nameRole' => $nameRole,
+                    'idStatus' => $idStatus 
 				);
 				//print_r($update_role);
 				
@@ -100,6 +100,23 @@ function Consultar(){
 			}
 				echo '</table>';
 }
+
+function getRoleId(){
+	$role = new RoleController();
+	$id_role = $role->get();
+
+	if ($id_role != 'error') {
+
+		foreach ($id_role as $idRole) {
+		echo "<option value=". $idRole['idRole'] ."> ". $idRole['idRole'] ." </option>";
+		   
+		}
+	} else {
+		echo "<p>No hay sub categorias en BD</p>";
+	}					
+}
+
+
 
 function dropDownStatus()
 {

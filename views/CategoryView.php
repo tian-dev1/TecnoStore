@@ -67,11 +67,10 @@ if(isset($_POST['accion'])){
 		break;
 
 		case 'Eliminar':
-            if(isset($_POST['IdCategoryDelete'])  && !empty($_POST['IdCategoryDelete'])   ){
+            if(isset($_POST['idCategoryDelete'])  && !empty($_POST['idCategoryDelete'])   ){
                         
-                $IdCategoryDelete = $_POST['IdCategoryDelete'];
-                echo "$IdCategoryDelete";
-				$category->del($IdCategoryDelete); 
+                $idCategoryDelete = $_POST['idCategoryDelete'];
+				$category->del($idCategoryDelete); 
 				
 				header('Location: ../Category.php');
 
@@ -113,6 +112,24 @@ function Consultar(){
 			}
 				echo '</table>';
 }
+
+function getCategoryId(){
+	$category = new CategoryController();
+	$id_category = $category->get();
+
+	if ($id_category != 'error') {
+
+		foreach ($id_category as $idCategory) {
+		echo "<option value=". $idCategory['idCategory'] ."> ". $idCategory['idCategory'] ." </option>";
+		   
+		}
+	} else {
+		echo "<p>No hay sub categorias en BD</p>";
+	}
+			
+			
+}
+
 
 function dropDownStatus()
 {

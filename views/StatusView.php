@@ -30,17 +30,17 @@ if(isset($_POST['accion'])){
 
 		case 'Actualizar':
 
-			if( (isset($_POST['idStatusUpdate']) && !empty($_POST['idStatusUpdate'])) && (isset($_POST['nameStatusUpdate']) && !empty($_POST['nameStatusUpdate'])) )
+			if( (isset($_POST['idStatus']) && !empty($_POST['idStatus'])) && (isset($_POST['nameStatus']) && !empty($_POST['nameStatus'])) )
 			{
-				$idStatusUpdate = $_POST['idStatusUpdate'];
-				$nameStatusUpdate = $_POST['nameStatusUpdate'];
+				$idStatus = $_POST['idStatus'];
+				$nameStatus = $_POST['nameStatus'];
 				
 				// echo "Id del status $idStatusUpdate  <br>
 				// 	nuevo nombre estado $nameStatusUpdate <br>";
 
 				$update_status = array(
-					'idStatus' => $idStatusUpdate,
-					'nameStatus' => $nameStatusUpdate
+					'idStatus' => $idStatus,
+					'nameStatus' => $nameStatus
 				);
 				//print_r($update_status);
 				
@@ -94,4 +94,20 @@ function Consultar(){
 				</tr>';
 			}
 				echo '</table>';
+}
+
+
+function getStatusId(){
+	$status = new StatusController();
+	$id_status = $status->get();
+
+	if ($id_status != 'error') {
+
+		foreach ($id_status as $idStatus) {
+		echo "<option value=". $idStatus['idStatus'] ."> ". $idStatus['idStatus'] ." </option>";
+		   
+		}
+	} else {
+		echo "<p>No hay sub categorias en BD</p>";
+	}					
 }

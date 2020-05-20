@@ -27,13 +27,19 @@
         <form class="formDelete" method="POST" action="views/CategoryView.php">
             <div class="sub-container">
                 <h2>Eliminar Categoria:</h2>
-                <input type="number" name="IdCategoryDelete" placeholder="ID Categoria">
+                <select name="idCategoryDelete">
+                    <option value="" selected>Seleccione...</option>
+                    <?php getCategoryId(); ?>
+                </select>
                 <input type="submit" value="Eliminar" name="accion">
             </div>   
         </form>
         <form class="formUpdate" method="POST" action="views/CategoryView.php">
             <h2>Actualizar Categoria:</h2>
-            <input style="margin: 20px;" type="number" name="idCategory" placeholder="id estado">
+            <select name="idCategory">
+                <option value="" selected>Seleccione...</option>
+                <?php getCategoryId(); ?>
+            </select>
             <input style="margin: 20px;" type="text" name="nameCategory" placeholder="Nombre categoria">
             <input style="margin: 20px;" type="text" name="descriptionCategory" placeholder="Descripción">
             <select name="idStatus">

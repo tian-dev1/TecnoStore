@@ -25,14 +25,20 @@
         <form class="formDelete" method="POST" action="views/StatusView.php">
             <div class="sub-container">
                 <h2>Eliminar estatus</h2>
-                <input type="number" name="idStatusDelete" placeholder="id estado">
+                <select name="idStatusDelete">
+                    <option value="" selected>Seleccione...</option>
+                    <?php getStatusId(); ?>
+                </select>
                 <input type="submit" value="Eliminar" name="accion">
             </div>   
         </form>
         <form class="formUpdate" method="POST" action="views/StatusView.php">
             <h2>Actualizar estatus:</h2>
-            <input style="margin: 20px;" type="number" name="idStatusUpdate" placeholder="id estado">
-            <input style="margin: 20px;" type="text" name="nameStatusUpdate" placeholder="nombre estado">
+            <select name="idStatus">
+                <option value="" selected>Seleccione...</option>
+                <?php getStatusId(); ?>
+            </select>
+            <input style="margin: 20px;" type="text" name="nameStatus" placeholder="nombre estado">
             <input style="margin: 20px;" type="submit" value="Actualizar" name="accion">
         </form>
     </div>
