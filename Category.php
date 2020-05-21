@@ -4,50 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./public/css/Category.css">
-    <title>Vista</title>
+    <link rel="icon" type="image/png" href="./public/img/IconoBlack.png" />
+    <title>Categorías</title>
 </head>
 <body>
     <div class="container">
         <div class="title">
-            <h1>Gestión de categorias</h1>
+            <h1>Gestión de categorías</h1>
         </div>
-        <form class="formShow" method="POST" action="views/CategoryView.php">
-            <?php
-                require(__DIR__.'/views/CategoryView.php');
-                Consultar();
-            ?>
-        </form>
-        <form class="formInsert" method="POST" action="views/CategoryView.php">
-            <h2>Insertar Categoria:</h2>
-            <input type="text" name="nameCategory" placeholder="Nombre categoria">
-            <input type="text" name="descriptionCategory" placeholder="Descripción categoria" value="Sin descripción">
-            <input type="hidden" name="idStatus" value="1">
-            <input type="submit" value="Insertar" name="accion">     
-        </form>
-        <form class="formDelete" method="POST" action="views/CategoryView.php">
-            <div class="sub-container">
-                <h2>Eliminar Categoria:</h2>
-                <select name="idCategoryDelete">
-                    <option value="" selected>Seleccione...</option>
-                    <?php getCategoryId(); ?>
-                </select>
-                <input type="submit" value="Eliminar" name="accion">
-            </div>   
-        </form>
-        <form class="formUpdate" method="POST" action="views/CategoryView.php">
-            <h2>Actualizar Categoria:</h2>
-            <select name="idCategory">
-                <option value="" selected>Seleccione...</option>
-                <?php getCategoryId(); ?>
-            </select>
-            <input style="margin: 20px;" type="text" name="nameCategory" placeholder="Nombre categoria">
-            <input style="margin: 20px;" type="text" name="descriptionCategory" placeholder="Descripción">
-            <select name="idStatus">
-                <?php dropDownStatus(); ?>
-            </select>
-           <input style="margin: 20px;" type="submit" value="Actualizar" name="accion">
-        </form>
+        <div class="divShow">
+            <form class="formShow" method="POST" action="views/CategoryView.php">
+                <?php
+                    require(__DIR__.'/views/CategoryView.php');
+                    Consultar();
+                ?>
+            </form>
+        </div>
+        <div class="formsActions">
+            <form class="formInsert" method="POST" action="views/CategoryView.php">
+                <h2>Insertar Categoría:</h2>
+                <div class="row">
+                    <input type="text" name="nameCategory" placeholder="Nombre categoria">
+                    <input type="text" name="descriptionCategory" placeholder="Descripción categoria" value="Sin descripción">  
+                </div>
+                <input type="submit" value="Insertar" name="accion">     
+            </form>
+            <form class="formUpdate" method="POST" action="views/CategoryView.php">
+                <h2>Actualizar Categoría:</h2>
+                <div class="row">
+                    <select name="idCategory">
+                        <option value="" selected>Seleccione id de categoría...</option>
+                        <?php getCategoryId(); ?>
+                    </select>
+                    <input type="text" name="nameCategory" placeholder="Nombre categoría">
+                </div>
+                <div class="row">
+                    <input type="text" name="descriptionCategory" placeholder="Descripción categoría">
+                    <select name="idStatus">
+                        <?php dropDownStatus(); ?>
+                    </select>    
+                </div>
+                
+            <input type="submit" value="Actualizar" name="accion">
+            </form>
+            <form class="formDelete" method="POST" action="views/CategoryView.php">
+                <div class="sub-container">
+                    <h2>Eliminar Categoria:</h2>
+                    <div class="row">
+                        <select name="idCategoryDelete">
+                            <option value="" selected>Seleccione id de categoría...</option>
+                            <?php getCategoryId(); ?>
+                        </select>  
+                        <input type="submit" value="Eliminar" name="accion">
+                    </div>
+                </div>   
+            </form>
+        </div>
+        <div class="title">
+            <h2>Footer</h2>
+        </div>  
     </div>
+    
 
     
 

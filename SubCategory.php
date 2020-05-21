@@ -3,57 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/css/Category.css">
-    <title>Vista</title>
+    <link rel="icon" type="image/png" href="./public/img/IconoBlack.png" />
+    <link rel="stylesheet" href="./public/css/SubCategory.css">
+    <title>Sub Categorías</title>
 </head>
 <body>
     <div class="container">
         <div class="title">
-            <h1>Gestión de sub categorias</h1>
+            <h1>Gestión de sub categorías</h1>
         </div>
-        <form class="formShow" method="POST" action="views/SubCategoryView.php">
-            <?php
-                require(__DIR__.'/views/SubCategoryView.php');
-                Consultar();
-            ?>
-        </form>
-        <form class="formInsert" method="POST" action="views/SubCategoryView.php">
-            <h2>Insertar Sub Categoria:</h2>
-            <input type="text" name="nameSubCategory" placeholder="Nombre sub categoria">
-            <input type="text" name="descriptionSubCategory" placeholder="Descripción sub categoria" value="Sin descripción">
-            <select name="idCategory">
-                <option value="" selected>Seleccione...</option>
-                <?php dropDownCategory(); ?>
-            </select>
-            <input type="submit" value="Insertar" name="accion">     
-        </form>
-        <form class="formDelete" method="POST" action="views/SubCategoryView.php">
-            <div class="sub-container">
-                <h2>Eliminar Sub Categoria:</h2>
-                <select name="idSubCategoryDelete">
-                    <option value="" selected>Seleccione...</option>
-                    <?php getSubCategoryId(); ?>
-                </select>
-                <input type="submit" value="Eliminar" name="accion">
-            </div>   
-        </form>
-        <form class="formUpdate" method="POST" action="views/SubCategoryView.php">
-            <h2>Actualizar Sub Categoria:</h2>
-            <select name="idSubCategory">
-                <option value="" selected>Seleccione...</option>
-                <?php getSubCategoryId(); ?>
-            </select>
-            <input style="margin: 20px;" type="text" name="nameSubCategory" placeholder="Nombre categoria">
-            <input style="margin: 20px;" type="text" name="descriptionSubCategory" placeholder="Descripción">
-            <select name="idCategory">
-                <option value="" selected>Seleccione...</option>
-                <?php dropDownCategory(); ?>
-            </select>
-            <select name="idStatus">
-                <?php dropDownStatus(); ?>
-            </select>
-           <input style="margin: 20px;" type="submit" value="Actualizar" name="accion">
-        </form>
+        <div class="divShow">
+            <form class="formShow" method="POST" action="views/SubCategoryView.php">
+                <?php
+                    require(__DIR__.'/views/SubCategoryView.php');
+                    Consultar();
+                ?>
+            </form>
+        </div>
+        
+        <div class="formsActions">
+            <form class="formInsert" method="POST" action="views/SubCategoryView.php">
+                <h2>Insertar Sub Categoría:</h2>
+                <div class="row">
+                    <input type="text" name="nameSubCategory" placeholder="Nombre sub categoria">
+                    <select name="idCategory">
+                        <option value="" selected>Seleccione id de sub categoría...</option>
+                        <?php dropDownCategory(); ?>
+                    </select>
+                </div>
+                <div class="row">
+                    <textarea name="descriptionSubCategory" placeholder="Descripción sub categoria">Sin descripción</textarea>    
+                </div>
+                <input type="submit" value="Insertar" name="accion">
+            </form>
+            <form class="formUpdate" method="POST" action="views/SubCategoryView.php">
+                <h2>Actualizar Sub Categoria:</h2>
+                <div class="row">
+                    <select name="idSubCategory">
+                        <option value="" selected>Seleccione id de sub categoría...</option>
+                        <?php getSubCategoryId(); ?>
+                    </select>
+                    <input type="text" name="nameSubCategory" placeholder="Nombre sub categoria">
+                </div>
+                <div class="row">
+                <textarea name="descriptionSubCategory" placeholder="Descripción sub categoria"></textarea>
+                </div>
+                <div class="row">
+                    <select name="idCategory">
+                        <option value="" selected>Seleccione id de categoría...</option>
+                        <?php dropDownCategory(); ?>
+                    </select>
+                    <select name="idStatus">
+                        <?php dropDownStatus(); ?>
+                    </select>
+                </div>
+                    <input type="submit" value="Actualizar" name="accion">
+            </form>
+            <form class="formDelete" method="POST" action="views/SubCategoryView.php">
+                <div class="sub-container">
+                    <h2>Eliminar Sub Categoria:</h2>
+                    <div class="row">
+                        <select name="idSubCategoryDelete">
+                            <option value="" selected>Seleccione id de sub categoría....</option>
+                            <?php getSubCategoryId(); ?>
+                        </select>
+                        <input type="submit" value="Eliminar" name="accion">
+                    </div>
+                </div>   
+            </form>
+        </div>
+        <div class="title">
+            <h2>Footer</h2>
+        </div>
     </div>
 
     

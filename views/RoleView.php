@@ -84,7 +84,7 @@ function Consultar(){
 			<h2>Consulta de roles</h2>
 			<?php echo "<h3>Número de Registros: $num_role </h3>"; ?>
 				<table>
-				<tr>
+				<tr class="headboard">
 					<th>ID Role</th>
 					<th>Name Role</th>
                     <th>ID Status</th>

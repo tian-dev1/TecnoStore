@@ -81,7 +81,7 @@ function Consultar(){
 			<h2>Consulta de estados</h2>
 			<?php echo "<h3>Número de Registros: $num_status</h3>"; ?>
 				<table>
-				<tr>
+				<tr class="headboard">
 					<th>ID Status</th>
 					<th>Name Status</th>
 				</tr>

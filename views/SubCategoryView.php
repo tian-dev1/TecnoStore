@@ -99,8 +99,8 @@ function Consultar(){
 			
 			<h2>Consulta de sub categorias</h2>
 			<?php echo "<h3>Número de Registros: $num_sub_category</h3>"; ?>
-				<table>
-				<tr>
+				<table >
+				<tr class="headboard">
 					<th>ID </th>
 					<th>Nombre </th>
                     <th>Descripción </th>
