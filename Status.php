@@ -44,7 +44,7 @@
                 <h2>Actualizar estado:</h2>
                 <div class="row">
                     <select name="idStatus">
-                        <option value="" selected>Seleccione...</option>
+                        <option value="" selected>Seleccione id del estado...</option>
                         <?php getStatusId(); ?>
                     </select>
                     <input type="text" name="nameStatus" placeholder="Nombre estado">

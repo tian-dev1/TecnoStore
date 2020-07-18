@@ -1,124 +1,106 @@
+/* ---------Fuente  ---------- */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
 body{
     margin: 0;
     padding: 0;
     background-color: #f1f1f1;
+    font-family: 'Open Sans', sans-serif;
 }
-/* Contenedor de toda la página */
+/* ********* COntenedor para toda la página  ********* */
 .container{
     margin: 0 5%;
     
 }
 
-/* header con sus tres secciones */
+/* ********* Header con logo registro e ingresar ********* */
 .header{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     column-gap: 0.5rem;
 }
-
 .header .header-left {
     grid-column: span 1;
 }
-
-.header .header-center {
-    grid-column: span 1;
-    justify-self: start;
-    
-}
 .header .header-rigth {
-    grid-column: span 1;
+    grid-column: span 2;
     justify-self: end;
     
 }
-
-.header-center a, .header-rigth a{
+.header-rigth a{
     text-decoration: none;
     margin-right: 10px;
-    padding: 5px;
-    color: black;
+    padding: 10px;
+    color: #1b1b1b;
+    font-size: 18px;
 
 }
-
-
-.header-center a:hover, .header-rigth a:hover {
+.header-rigth a:hover {
     background-color: #ddd;
     border-radius: 5px;
-
-  }
-
-
-
+}
 .header-rigth{
     padding: 10px; 
-    border-left: 1px solid black;
+    border-left: 1px solid #1b1b1b;
 }
 
+ /* ********* Section de jumbotron ********* */
+.title-page{
+    font-size: 40px;
+    color: #1b1b1b;
+}
+.jumbotron-info{
+    font-size: 20px;
+    color: #1b1b1b;
 
-/* */ 
+}
+
+ /* ********* Section de nav de productos ********* */
 .nav{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
-    background-color: gray;
+    background-color: #d8d8d8;
+    border-radius: 5px;
 }
-
 .nav .nav-left {
     grid-column: span 1;
     
 }
-
 .nav .nav-rigth {
     grid-column: span 1;
     justify-self: end;
     
 }
-
-
-.nav .nav-rigth a{
+.nav .nav-left a{
     text-decoration: none;
-    margin-right: 10px;
-    padding: 5px;
-    color: black;
+    margin: 10px;
+    padding: 10px;
+    color: #1b1b1b;
+    font-size: 18px;
     
 }
+.nav-left a:hover {
+    background-color: #fff;
+    border-radius: 5px;
+}
+.inputSearch{
+    border-color: gray;
+    border-radius: 5px;
+    border-style: solid;
+    padding: 10px 20px 10px 30px;
+    background-color: transparent;
+    margin: 10px;
+    font-size: 18px;
+    /* Posición del icono*/
+    background-image: url('../img/searchIcon.png');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 5px;  
+}
 
-
-.nav-rigth a:hover {
-    color: #ddd;
-  }
-
-
-
-
-
-
-
-
-  .accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s;
-  }
-  
-  .active, .accordion:hover {
-    background-color: #ccc; 
-  }
-  
-  .panel {
-    padding: 0 18px;
-    display: none;
-    background-color: white;
-    overflow: hidden;
-  }
-
+/* ********* Section de carrousel  ********* */
 .container-carrousel{
     margin: 10px 0;
 }
@@ -127,6 +109,7 @@ body{
     margin: 0 auto;
     display: flex;
 }
+
 #imagen {
     width: 90%; 
     margin: auto;
@@ -141,15 +124,39 @@ body{
     background-color: transparent;
     border: none;
     margin: 20px 0;
+    cursor: pointer;
 }
 
 .buttons:active {
     background-color: #f0f0f0;
 }
 
-.accordion{
+/* ********* Section de caccordion  ********* */
+.container-accordion{
+    margin: 20px;
+}
+.accordion {
+    background-color: #f1f1f1;
+    color: #1b1b1b;
+    cursor: pointer;
+    padding: 20px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
     font-size: 20px;
-    color: black;
+    transition: 0.4s;
+}
+  
+.active, .accordion:hover {
+    background-color: #6c6c6c; 
+}
+  
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: #f1f1f1;
+    overflow: hidden;
 }
 
 
@@ -178,32 +185,66 @@ body{
 }
 .items-products{
     margin: 10px;
+    font-size: 18px;
 }
 
+.title-products{
+    font-size: 18px;
+}
 
+.buttons-products{
+    display: flex;
+    justify-content: space-around;
+}
+
+.buyButton{
+    height: 50px;
+    color: white;
+    background-color: #1b1b1b;
+    border: 1px solid #1b1b1b;
+    padding: 10px 20px;
+    /* Centrar*/
+    display: block;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.butButton:hover{
+    color: black;
+    background-color: #6c6c6c;
+    border: 1px solid #1b1b1b;
+    cursor: pointer;
+    
+}
 
 /* ********** Section de pie de página *********** */
 
 .footer{
-    display: grid;
-    gap: 1.6em;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
+    background-color: #313337;
+    color: white;
 }
 
 .footer .footer-left {
-    grid-column: span 1;
-    background-color: black;
-    justify-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
     
 }
+
 
 .footer .footer-rigth {
-    background-color: green;
-
-    grid-column: span 1;
-    justify-self: center;
     
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.imgLogo{
+    vertical-align: middle;
+    border-style: none;
 }
 
 
@@ -211,6 +252,36 @@ body{
 
 
 
+
+
+
+
+
+
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-size: 50px;
+    margin: 0 10px;
+}
+
+.social-link.facebook {
+    background-image: url(../img/facebook.svg);
+}
+.social-link.instagram {
+    background-image: url(../img/instagram.svg);
+}
+.social-link.twitter {
+    background-image: url(../img/twitter.svg);
+}
+.social-link.whatsapp {
+    background-image: url(../img/whatsapp.png);
+}
+.social-link.github {
+    background-image: url(../img/github.svg);
+}
 
 
 

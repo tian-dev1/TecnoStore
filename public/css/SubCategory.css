@@ -1,5 +1,9 @@
+/* ---------Fuente  ---------- */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+
 body{
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
     background-color: #f1f1f1;
 }
 .container{
@@ -24,7 +28,7 @@ body{
     margin: 20px 0;
 }
 .formShow{
-    padding: 25px;
+    padding: 20px;
 }
 
 .formsActions{
@@ -34,37 +38,51 @@ body{
 }
 
 .formInsert, .formDelete, .formUpdate{
-    padding: 25px;
-    box-shadow: 0 12px 30px 0 rgba(80, 85, 223, .37); /* SOmbrea de la caje */
-    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 20px 0 rgba(80, 85, 223, .37); /* SOmbrea de la caje */
+    margin: 10px;
 }
 
 input[type="text"]{ /* Este estilo toma todos los input de tipo text y email*/
     width: 45%;
-    margin-bottom: 15px;
-    padding: 18px 0;
+    margin-bottom: 20px;
+    padding: 20px 0;
     border: 0;
-    border-bottom: 1px solid #323232;
-    font-size: 17px;
+    border-bottom: 1px solid #c8c8c8;
+    font-size: 18px;
     background-color: transparent;
+}
+
+input[type="text"]:focus, select:focus, textarea:focus{ /* Este estilo toma todos los input de tipo text y email*/
+    border-bottom: 1px solid #1b1b1b; 
+    
 }
 
 select{
     width: 45%;
     margin-bottom: 20px;
-    padding: 18px 0;
+    padding: 20px 0;
     border: 0;
-    border-bottom: 1px solid #323232;
-    font-size: 17px;
+    border-bottom: 1px solid #c8c8c8;
+    font-size: 18px;
     background-color: transparent;
+
     -moz-appearance: none;
     -webkit-appearance: none;
 }
 
-input[type="text"]:focus, select:focus, textarea:focus{ /* Este estilo toma todos los input de tipo text y email*/
-    border-bottom: 1px solid black; 
-    
+textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px 0;
+    border: 0;
+    border-bottom: 1px solid #c8c8c8;
+    font-size: 18px;
+    background-color: transparent;
+    height: 50px;
 }
+
+
 
 .row{
     display: flex;
@@ -74,33 +92,23 @@ input[type="text"]:focus, select:focus, textarea:focus{ /* Este estilo toma todo
 input[type="submit"]{
     height: 50px;
     color: white;
-    background-color: black;
-    border: 1px solid black;
+    background-color: #1b1b1b;
+    border: 1px solid #1b1b1b;
     padding: 10px 20px;
     /* Centrar*/
     display: block;
     margin: auto;
     border-radius: 5px;
+    font-size: 18px;
 }
 
 input[type="submit"]:hover{
     color: black;
-    background-color: gray;
-    border: 1px solid black;
+    background-color: #6c6c6c;
+    border: 1px solid #1b1b1b;
     cursor: pointer;
+    
 }
-
-textarea {
-    padding: 18px 0;
-    border: 0;
-    border-bottom: 1px solid #323232;  
-    font-size: 17px;
-    margin-bottom: 20px;
-    width: 100%; 
-    background-color: transparent;
-    height: 50px;
-}
-
 
 table {
     border-collapse: collapse;
@@ -110,17 +118,17 @@ table {
 td, th {
     border: 1px solid #c8c8c8;
     text-align: left;
-    padding: 8px;
+    padding: 10px;
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #c8c8c8;
 }
 
 tr:hover {
-    background-color: gray;
+    background-color: #6c6c6c;
 }
 
 .headboard{
-    background-color: gray;
+    background-color: #6c6c6c;
 }

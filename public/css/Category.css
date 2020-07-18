@@ -1,20 +1,33 @@
-
+/* ---------Fuente  ---------- */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
 /* ***** Variables ***** */
-/* dark and light */
 :root{
-    --black-color-dark: #1b1b1b;
-    --black-color: #313337; /* Texto letra */
-    --gray-color: #6c6c6c; /* Button hover */
-
-    --space: 10px;
+    /* ***** Colores ***** */
+    --color-transparent: transparent;
+    --color-white-light: #ffffff; 
+    --color-white-dark: #f1f1f1;
+    --color-gray-light: #c8c8c8;
+    --color-gray-dark: #6c6c6c; 
+    --color-black-light: #313337; 
+    --color-black-dark: #1b1b1b;
+    /* ***** Tipografía ***** */
+    --small-font:18px;
+    --normal-font: 20px;
+    --big-font: 40px;
+    /* ***** Espaciado ***** */
+    --space-0: 0;
+    --space-1: 10px;
     --space-2: 20px;
+
+    /* ***** Border ***** */
+    --border-1: 1px;
 }
 
-
-
 body{
-    margin: 0;
-    background-color: #f1f1f1;
+    margin: var(--space-0);
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--color-white-dark)
+    
 }
 .container{
     display: flex;
@@ -34,11 +47,11 @@ body{
 
 .divShow{
     flex:1 1 50%;
-    box-shadow: 0 12px 30px 0 rgba(80, 85, 223, .37); /* SOmbrea de la caje */
-    margin: 20px 0;
+    box-shadow: 0 10px 20px 0 rgba(80, 85, 223, .37); /* SOmbrea de la caje */
+    margin: var(--space-2) var(--space-0);
 }
 .formShow{
-    padding: 25px;
+    padding: var(--space-2);
 }
 
 .formsActions{
@@ -48,37 +61,49 @@ body{
 }
 
 .formInsert, .formDelete, .formUpdate{
-    padding: 25px;
-    box-shadow: 0 12px 30px 0 rgba(80, 85, 223, .37); /* Sombrea de la caje */
-    margin: 20px;
+    padding: var(--space-2);
+    box-shadow: 0 10px 20px 0 rgba(80, 85, 223, .37); /* Sombrea de la caje */
+    margin: var(--space-1);
 }
 
 input[type="text"]{ /* Este estilo toma todos los input de tipo text y email*/
     width: 45%;
-    margin-bottom: 15px;
-    padding: 18px 0;
-    border: 0;
-    border-bottom: 1px solid #6c6c6c;
-    font-size: 17px;
-    background-color: transparent;
+    margin-bottom: var(--space-2);
+    padding: var(--space-2) var(--space-0);
+    border: var(--space-0);
+    border-bottom: 1px solid var(--color-gray-light);
+    font-size: var(--small-font);
+    background-color: var(--color-transparent);
+}
+
+input[type="text"]:focus, select:focus, textarea:focus{ 
+    border-bottom: 1px solid var(--color-black-dark); 
+    
 }
 
 select{
     width: 45%;
-    margin-bottom: 20px;
-    padding: 18px 0;
-    border: 0;
-    border-bottom: 1px solid #6c6c6c;
-    font-size: 17px;
-    background-color: transparent;
+    margin-bottom: var(--space-2);
+    padding: var(--space-2) var(--space-0);
+    border: var(--space-0);
+    border-bottom: 1px solid var(--color-gray-light);
+    font-size: var(--small-font);
+    background-color: var(--color-transparent);
+
     -moz-appearance: none;
     -webkit-appearance: none;
 }
 
-input[type="text"]:focus, select:focus, textarea:focus{ /* Este estilo toma todos los input de tipo text y email*/
-    border-bottom: 1px solid black; 
-    
-}
+ textarea {
+    width: 100%;
+    margin-bottom: var(--space-2);
+    padding: var(--space-2) var(--space-0);
+    border: var(--space-0);
+    border-bottom: 1px solid #c8c8c8;
+    font-size: var(--small-font);
+    background-color: var(--color-transparent);
+    height: 50px;
+} 
 
 .row{
     display: flex;
@@ -87,32 +112,24 @@ input[type="text"]:focus, select:focus, textarea:focus{ /* Este estilo toma todo
 
 input[type="submit"]{
     height: 50px;
-    color: white;
-    background-color: #313337;
-    padding: 10px 20px;
+    color: var(--color-white-light);
+    background-color: var(--color-black-dark);
+    border: 1px solid var(--color-black-dark);
+    padding: var(--space-1) var(--space-2);
     /* Centrar*/
     display: block;
     margin: auto;
     border-radius: 5px;
+    font-size: var(--small-font);
 }
 
 input[type="submit"]:hover{
     color: black;
-    background-color: gray;
+    background-color: var(--color-gray-dark);
+    border: 1px solid var(--color-black-dark);
     cursor: pointer;
+    
 }
-
-textarea {
-    padding: 18px 0;
-    border: 0;
-    border-bottom: 1px solid #6c6c6c;  
-    font-size: 17px;
-    margin-bottom: 20px;
-    width: 100%; 
-    background-color: transparent;
-    height: 50px;
-}
-
 
 table {
     border-collapse: collapse;
@@ -120,19 +137,19 @@ table {
 }
 
 td, th {
-    border: 1px solid #c8c8c8;
+    border: 1px solid var(--color-gray-light);
     text-align: left;
-    padding: 8px;
+    padding: var(--space-1);
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: var(--color-gray-light);
 }
 
 tr:hover {
-    background-color: gray;
+    background-color: var(--color-gray-dark);
 }
 
 .headboard{
-    background-color: gray;
+    background-color: var(--color-gray-dark);
 }
