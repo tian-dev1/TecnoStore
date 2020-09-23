@@ -11,4 +11,4 @@ TecnoStore is technology store developed with PHP and MySQL as part backend and 
 - CRUD Roles
 
 ## Preview
-
+<img src="https://github.com/tiancamilo01/TecnoStore/blob/master/public/img/tecnostore-img.png">
